@@ -1,13 +1,13 @@
 
   var http = require('https');
 
-function getAndPrintHTML(callback) {
   var requestOptions = {
     host: 'sytantris.github.io',
-    path: '/http-examples/step1.html'
+    path: '/http-examples/step3.html'
   };
 
-  http.get(requestOptions, function(response) {
+function getAndPrintHTML(options) {
+  http.get(options, function(response) {
     var allChunks = '';
     response.setEncoding('utf8');
     response.on('data', function(chunk) {
@@ -20,13 +20,8 @@ function getAndPrintHTML(callback) {
 
 }
 
-function getAndPrintHTMLChunks() {
-  var requestOptions = {
-    host: 'sytantris.github.io',
-    path: '/http-examples/step1.html'
-  };
-
-  http.get(requestOptions, function(response) {
+function getAndPrintHTMLChunks(options, callback) {
+  http.get(options, function(response) {
     var allChunks = '';
     response.setEncoding('utf8');
     response.on('data', function(chunk) {
@@ -40,10 +35,9 @@ function getAndPrintHTMLChunks() {
 
 }
 
-
 function printChunks(data) {
   console.log(data);
 }
 
-// getAndPrintHTML(printChunks);
+getAndPrintHTMLChunks(requestOptions, printChunks);
 // getAndPrintHTML();
