@@ -25,8 +25,7 @@ function getAndPrintHTMLChunks(options, callback) {
     var allChunks = '';
     response.setEncoding('utf8');
     response.on('data', function(chunk) {
-      console.log('Chunk: '+ chunk + '\n');
-      allChunks += chunk;
+      allChunks += chunk + '\n';
     });
     response.on('end', function() {
       callback(allChunks);
